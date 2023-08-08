@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       {!selectedProduct ? (
-        <ListView />
+        <ListView productSelected={(product) => setSelectedProduct(product)} />
       ) : (
         <DetailsView product={selectedProduct} />
       )}
