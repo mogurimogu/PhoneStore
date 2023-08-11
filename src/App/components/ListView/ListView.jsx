@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
+import PropTypes from "prop-types";
 import Search from "./Search/Search";
 import Item from "./Item/Item";
 import getProducts from "../../util/getProducts";
-function ListView() {
+
+function ListView({ productSelected }) {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState([]);
   const [error, setError] = useState("");
-  //TODO Hacer callback que devuelva el item seleccionado a APP
-  //TODO Recibir filtrado de la búsqueda
   useMemo(async () => {
     const cacheValidation = () => {
       const cacheDate = JSON.parse(localStorage.getItem("cacheCreationDate"));
@@ -39,17 +39,23 @@ function ListView() {
     <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-white bg-opacity-5 backdrop-blur-sm">
       <Search filter={(products) => setFilter(products)} products={products} />
 
-      <div className="grid grid-cols-4 gap-10 p-10">
+      <ul className="grid grid-cols-4 gap-10 p-10">
         {products.length
-          ? (filter.length ? filter : products).map((product, index) => (
-              <Item key={index} product={product} />
+          ? (filter.length ? filter : products).map((product) => (
+              <li key={product.id} onClick={() => productSelected(product.id)}>
+                <Item product={product} />
+              </li>
             ))
           : error
           ? error
           : "Cargando..."}
-      </div>
+      </ul>
     </div>
   );
 }
+
+ListView.propTypes = {
+  productSelected: PropTypes.func.isRequired,
+};
 
 export default ListView;
