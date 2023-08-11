@@ -4,10 +4,9 @@ import Item from "./Item/Item";
 import getProducts from "../../util/getProducts";
 function ListView() {
   const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState([]);
   const [error, setError] = useState("");
   //TODO Hacer callback que devuelva el item seleccionado a APP
-  // const { productSelected } = props;
-
   //TODO Recibir filtrado de la búsqueda
   useMemo(async () => {
     const cacheValidation = () => {
@@ -37,17 +36,18 @@ function ListView() {
   }, []);
 
   return (
-    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3">
-      <Search />
-      {/* TODO Mapeo de todos los items de la API */}
+    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-white bg-opacity-5 backdrop-blur-sm">
+      <Search filter={(products) => setFilter(products)} products={products} />
+
       <div className="grid grid-cols-4 gap-10 p-10">
         {products.length
-          ? products.map((product, index) => (
+          ? (filter.length ? filter : products).map((product, index) => (
               <Item key={index} product={product} />
             ))
-          : "cargando"}
+          : error
+          ? error
+          : "Cargando..."}
       </div>
-      {error}
     </div>
   );
 }
