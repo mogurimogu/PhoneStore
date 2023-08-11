@@ -5,17 +5,17 @@ import ListView from "./components/ListView/ListView";
 import DetailsView from "./components/DetailsView/DetailsView";
 
 function App() {
-  const [selectedProduct, setSelectedProduct] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   //TODO Recibir el producto seleccionado
   return (
-    <>
+    <div className="backgroundAPP">
       <Header />
       {!selectedProduct ? (
-        <ListView />
+        <ListView productSelected={(product) => setSelectedProduct(product)} />
       ) : (
         <DetailsView product={selectedProduct} />
       )}
-    </>
+    </div>
   );
 }
 
