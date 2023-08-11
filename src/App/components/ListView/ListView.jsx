@@ -15,15 +15,19 @@ function ListView({ productSelected }) {
       const actualDate = new Date().getTime();
       const checkDiff =
         Math.abs(cacheCreationDate - actualDate) / (1000 * 60 * 60);
-      return checkDiff >= 1 && localStorage.getItem("productsCache")
-        ? true
+
+      return localStorage.getItem("productsCache") &&
+        localStorage.getItem("cacheCreationDate")
+        ? checkDiff <= 1
         : false;
     };
-    if (!cacheValidation()) {
+
+    if (cacheValidation()) {
+      console.log("Cargando productos desde caché");
       setProducts(JSON.parse(localStorage.getItem("productsCache")));
-      console.log("Caché cargada");
     } else {
       try {
+        console.log("Cargando productos");
         const receivedProducts = await getProducts();
         setProducts(receivedProducts);
         localStorage.setItem("productsCache", JSON.stringify(receivedProducts));
@@ -40,7 +44,7 @@ function ListView({ productSelected }) {
       <Search filter={(products) => setFilter(products)} products={products} />
 
       <ul className="grid grid-cols-4 gap-10 p-10">
-        {products.length
+        {products
           ? (filter.length ? filter : products).map((product) => (
               <li key={product.id} onClick={() => productSelected(product.id)}>
                 <Item product={product} />
