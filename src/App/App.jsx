@@ -13,7 +13,7 @@ function App() {
       {!selectedProduct ? (
         <ListView productSelected={(product) => setSelectedProduct(product)} />
       ) : (
-        <DetailsView product={selectedProduct} />
+        <DetailsView productID={selectedProduct} />
       )}
     </div>
   );

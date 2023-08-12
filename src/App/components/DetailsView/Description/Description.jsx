@@ -1,7 +1,88 @@
-function Description() {
+import PropTypes from "prop-types";
+
+function Description({ productDetails }) {
+  const {
+    brand,
+    model,
+    price,
+    cpu,
+    ram,
+    os,
+    displayType,
+    displayResolution,
+    displaySize,
+    battery,
+    primaryCamera,
+    secondaryCmera,
+    dimentions,
+    weight,
+  } = productDetails;
+
+  const listTitleClasses = "font-semibold";
+  const SubListClasses= "list-disc list-inside pl-5"
+
   return (
-    <div>Description</div>
-  )
+    <>
+      <div className="flex justify-between bg-slate-700 items-center p-3 rounded-2xl">
+        <h1 className="text-2xl font-semibold text-white">
+          {brand} {model}
+        </h1>
+        <span className="text-5xl font-semibold text-amber-500">
+          {price}€
+        </span>
+      </div>
+      <ul className="p-3">
+        <li>
+          <span className={listTitleClasses}>CPU: </span>
+          {cpu}
+        </li>
+        <li>
+          <span className={listTitleClasses}>RAM: </span>
+          {ram}
+        </li>
+        <li>
+          <span className={listTitleClasses}>Sistema Operativo: </span>
+          {os}
+        </li>
+        <li>
+          <span className={listTitleClasses}>Pantalla:</span>
+          <ul className={SubListClasses}>
+            <li>{displayType}</li>
+            <li>{displayResolution}</li>
+            <li>{displaySize}</li>
+          </ul>
+        </li>
+        <li>
+          <span className={listTitleClasses}>Betería:</span> {battery}
+        </li>
+        <li>
+          <span className={listTitleClasses}>Cámaras:</span>
+          <ul className={SubListClasses}>
+            <li>
+              <span className={listTitleClasses}>Principal:</span>{" "}
+              {primaryCamera}
+            </li>
+            <li>
+              <span className={listTitleClasses}>Secundaria:</span>{" "}
+              {secondaryCmera}
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span className={listTitleClasses}>Dimensiones: </span>
+          {dimentions}
+        </li>
+        <li>
+          <span className={listTitleClasses}>Peso: </span>
+          {weight}g
+        </li>
+      </ul>
+    </>
+  );
 }
 
-export default Description
+Description.propTypes = {
+  productDetails: PropTypes.object.isRequired,
+};
+
+export default Description;
