@@ -40,10 +40,10 @@ function ListView({ productSelected }) {
   }, []);
 
   return (
-    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-white bg-opacity-80 backdrop-blur-sm">
+    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-gray-700 bg-opacity-80 backdrop-blur-sm">
       <Search filter={(products) => setFilter(products)} products={products} />
 
-      <ul className="grid grid-cols-4 gap-10 p-10">
+      <ul className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:px-10 py-5">
         {products
           ? (filter.length ? filter : products).map((product) => (
               <li key={product.id} onClick={() => productSelected(product.id)}>

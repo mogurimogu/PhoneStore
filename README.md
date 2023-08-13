@@ -29,3 +29,4 @@ Las librerías utilizadas para este proyecto son:
 - Tailwind
 - Chakra UI
 - Axios
+- React-icons

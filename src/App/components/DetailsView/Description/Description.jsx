@@ -23,8 +23,8 @@ function Description({ productDetails }) {
 
   return (
     <>
-      <div className="flex justify-between bg-slate-700 items-center p-3 rounded-2xl">
-        <h1 className="text-2xl font-semibold text-white">
+      <div className="flex justify-between bg-slate-700 items-center p-3 rounded-b-xl md:rounded-xl flex-wrap">
+        <h1 className="text-2xl font-semibold text-white mr-3">
           {brand} {model}
         </h1>
         <span className="text-5xl font-semibold text-amber-500">{price && price + ' €'}</span>

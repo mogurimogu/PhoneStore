@@ -10,9 +10,8 @@ import {
 
 function item({ product }) {
   const { id, brand, model, price, imgUrl } = product;
-  //TODO Pasar función onClick que reciba la ID del item APP
   return (
-    <Card id={id} rounded={"3xl"}>
+    <Card id={id} rounded={"3xl"} className="hover:scale-110 transition cursor-pointer">
       <CardBody>
         <Image src={imgUrl} alt={brand} marginX={"auto"} maxH={"130"} />
         <Stack mt="6" spacing="3">

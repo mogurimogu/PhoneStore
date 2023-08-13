@@ -21,7 +21,12 @@ function Search({ products, filter }) {
     setTimer(newTimer);
   };
   return (
-    <Input placeholder="Search" onChange={handleFilter} rounded={"full"} />
+    <Input
+      placeholder="Search"
+      onChange={handleFilter}
+      rounded={"full"}
+      background={"white"}
+    />
   );
 }
 
