@@ -28,7 +28,7 @@ function Header({ productName, goBack, cart }) {
         )}
       </span>
       <button className="px-4 flex items-center hover:text-amber-300 transition justify-end">
-        <span>{cart.length} </span>
+        <span>{cart ? cart.length : 0 } </span>
         <FaCartShopping className="inline-block ml-1" />
       </button>
     </header>
@@ -38,7 +38,7 @@ function Header({ productName, goBack, cart }) {
 Header.propTypes = {
   goBack: PropTypes.func.isRequired,
   productName: PropTypes.string,
-  cart: PropTypes.array.isRequired,
+  cart: PropTypes.array,
 };
 
 export default Header;

@@ -45,10 +45,9 @@ function Actions({ productDetails, goBack, toCart }) {
     }));
 
     setIsValid(validation.internalMemory && validation.color ? true : false);
-  }, [colors, internalMemory, validation]);
+  }, [colors, internalMemory, productDetails, validation]);
 
   const handleChange = (event) => {
-    console.log(productDetails);
     const { name, value } = event.target;
     setSelectedModel((prevModel) => ({
       ...prevModel,
@@ -64,7 +63,7 @@ function Actions({ productDetails, goBack, toCart }) {
       color: selectedModel.color ? true : false,
     }));
 
-    toCart(selectedModel);
+    isValid ? toCart(selectedModel) : "";
 
     setIsOpen(true);
   };
@@ -77,9 +76,8 @@ function Actions({ productDetails, goBack, toCart }) {
         {colors && (
           <>
             <label
-              className={`text-white text-lg font-medium ${
-                validation.color ? "" : "text-red-400"
-              }`}
+              className={`text-white text-lg font-medium`}
+              style={{ color: validation.color ? "white" : "#ff6666" }}
             >
               Colores*
             </label>
@@ -100,11 +98,10 @@ function Actions({ productDetails, goBack, toCart }) {
         {internalMemory && (
           <>
             <label
-              className={`text-white text-lg font-medium ${
-                validation.internalMemory ? "" : "text-red-400"
-              }`}
+              className={`text-white text-lg font-medium`}
+              style={{ color: validation.internalMemory ? "white" : "#ff6666" }}
             >
-              Memoria*
+              Almacenamiento*
             </label>
             <Select
               onChange={handleChange}

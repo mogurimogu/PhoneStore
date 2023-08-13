@@ -20,14 +20,14 @@ function App() {
   };
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => (prevCart ? [...prevCart, product] : [product]));
   };
 
   return (
     <div className="backgroundAPP min-h-screen p-3">
       <div className="overlay"></div>
       <div className="overlay-2"></div>
-      <Header productName={selectedProductName} goBack={goBack} cart={cart}/>
+      <Header productName={selectedProductName} goBack={goBack} cart={cart} />
       {!selectedProduct ? (
         <ListView productSelected={(product) => setSelectedProduct(product)} />
       ) : (
