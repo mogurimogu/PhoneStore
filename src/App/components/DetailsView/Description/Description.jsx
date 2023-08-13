@@ -27,9 +27,9 @@ function Description({ productDetails }) {
         <h1 className="text-2xl font-semibold text-white">
           {brand} {model}
         </h1>
-        <span className="text-5xl font-semibold text-amber-500">{price}€</span>
+        <span className="text-5xl font-semibold text-amber-500">{price && price + ' €'}</span>
       </div>
-      <ul className="p-3">
+      <ul className="py-5 px-10 bg-white rounded-xl my-3">
         {cpu && (
           <li>
             <span className={listTitleClasses}>CPU: </span>

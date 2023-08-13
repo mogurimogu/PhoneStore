@@ -40,7 +40,7 @@ function ListView({ productSelected }) {
   }, []);
 
   return (
-    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-white bg-opacity-5 backdrop-blur-sm">
+    <div className="container rounded-2xl shadow-xl mx-auto my-5 overflow-hidden p-3 bg-white bg-opacity-80 backdrop-blur-sm">
       <Search filter={(products) => setFilter(products)} products={products} />
 
       <ul className="grid grid-cols-4 gap-10 p-10">

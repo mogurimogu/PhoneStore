@@ -20,7 +20,7 @@ function item({ product }) {
             <Badge rounded="3xl" p={2}>
               {brand}
             </Badge>
-            <Text size={"xl"} color={"teal.500"} fontWeight={"bold"}>
+            <Text size={"xl"} className="text-amber-500" fontWeight={"bold"}>
               {price || 0}€
             </Text>
           </div>

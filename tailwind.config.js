@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      logo: ['Cherry Bomb One', 'cursive']
+    }
   },
   plugins: [],
+  
 }
