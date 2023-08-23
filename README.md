@@ -1,6 +1,6 @@
-# Napptilus Test
+# PhoneStore 
 
-Napptilus test es una SPA que muestra un listado de elementos que recibe a traves de una api.
+PhoneStore es una SPA que muestra un listado de elementos que recibe a traves de una api.
 
 - Muestra un listado de productos
 - Muestra los detalles de un producto en particular
